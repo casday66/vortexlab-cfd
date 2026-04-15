@@ -1,0 +1,30 @@
+{
+  "name": "Water Semi-Cylinder Wake Re120",
+  "domain": {
+    "nx": 260,
+    "ny": 120
+  },
+  "fluid": {
+    "name": "water",
+    "density": 997.0,
+    "kinematic_viscosity": 0.000001
+  },
+  "flow": {
+    "reynolds": 120,
+    "lattice_velocity": 0.055,
+    "profile": "uniform",
+    "perturbation": 0.0012
+  },
+  "solver": {
+    "steps_per_frame": 8
+  },
+  "obstacles": [
+    {
+      "type": "semi",
+      "x": 78,
+      "y": 60,
+      "radius": 17,
+      "angle_deg": 0
+    }
+  ]
+}

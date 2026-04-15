@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>VortexLab-CFD</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Interactive 2D CFD Laboratory</p>
+      <h1>VortexLab-CFD</h1>
+      <p class="lead">
+        Configure fluid properties, Reynolds number, and obstacle geometry, then run a live
+        Lattice Boltzmann simulation of wake formation and vortex shedding.
+      </p>
+    </div>
+    <div class="hero-card">
+      <span id="statusText">Ready</span>
+      <strong id="stepText">step 0</strong>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <section>
+        <h2>Preset</h2>
+        <label>
+          Case
+          <select id="presetSelect"></select>
+        </label>
+      </section>
+
+      <section class="grid-2">
+        <h2>Domain</h2>
+        <label>
+          Width
+          <input id="nxInput" type="number" min="80" max="520" step="10" value="260"/>
+        </label>
+        <label>
+          Height
+          <input id="nyInput" type="number" min="50" max="260" step="10" value="120"/>
+        </label>
+      </section>
+
+      <section class="grid-2">
+        <h2>Fluid And Flow</h2>
+        <label>
+          Fluid
+          <select id="fluidSelect"></select>
+        </label>
+        <label>
+          Inlet profile
+          <select id="profileSelect">
+            <option value="uniform">Uniform</option>
+            <option value="parabolic">Parabolic</option>
+          </select>
+        </label>
+        <label>
+          Reynolds number
+          <input id="reInput" type="range" min="20" max="500" step="5" value="120"/>
+          <output id="reValue">120</output>
+        </label>
+        <label>
+          Lattice velocity
+          <input id="uInput" type="range" min="0.015" max="0.085" step="0.001" value="0.055"/>
+          <output id="uValue">0.055</output>
+        </label>
+      </section>
+
+      <section class="grid-2">
+        <h2>Obstacle Builder</h2>
+        <label>
+          Shape
+          <select id="shapeSelect">
+            <option value="circle">Circle</option>
+            <option value="semi">Semi-cylinder</option>
+            <option value="ellipse">Ellipse</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="triangle">Triangle</option>
+            <option value="airfoil">NACA-style airfoil</option>
+          </select>
+        </label>
+        <label>
+          Size
+          <input id="sizeInput" type="range" min="8" max="42" step="1" value="17"/>
+          <output id="sizeValue">17</output>
+        </label>
+        <label>
+          X
+          <input id="xInput" type="range" min="30" max="260" step="1" value="78"/>
+          <output id="xValue">78</output>
+        </label>
+        <label>
+          Y
+          <input id="yInput" type="range" min="20" max="120" step="1" value="60"/>
+          <output id="yValue">60</output>
+        </label>
+        <label>
+          Angle
+          <input id="angleInput" type="range" min="-180" max="180" step="1" value="0"/>
+          <output id="angleValue">0 deg</output>
+        </label>
+      </section>
+
+      <section class="buttons">
+        <button id="addObstacleBtn">Add obstacle</button>
+        <button id="replaceObstacleBtn">Replace with current</button>
+        <button id="clearObstaclesBtn" class="ghost">Clear</button>
+      </section>
+
+      <section>
+        <h2>Obstacles</h2>
+        <div id="obstacleList" class="obstacle-list"></div>
+      </section>
+
+      <section class="grid-2">
+        <h2>Render And Export</h2>
+        <label>
+          Field
+          <select id="viewSelect">
+            <option value="speed">Speed</option>
+            <option value="vorticity">Vorticity</option>
+            <option value="density">Density</option>
+            <option value="mask">Obstacle mask</option>
+          </select>
+        </label>
+        <label>
+          Steps/frame
+          <input id="spfInput" type="number" min="1" max="40" step="1" value="8"/>
+        </label>
+      </section>
+
+      <section class="buttons">
+        <button id="runBtn">Run</button>
+        <button id="pauseBtn" class="ghost">Pause</button>
+        <button id="resetBtn" class="ghost">Reset</button>
+      </section>
+
+      <section class="buttons">
+        <button id="exportFieldBtn" class="secondary">Export field CSV</button>
+        <button id="exportHistoryBtn" class="secondary">Export history CSV</button>
+        <button id="exportConfigBtn" class="secondary">Export config JSON</button>
+      </section>
+    </aside>
+
+    <section class="stage">
+      <div class="canvas-shell">
+        <canvas id="flowCanvas" width="260" height="120"></canvas>
+      </div>
+
+      <div class="stats">
+        <div><span>Effective Re</span><strong id="effectiveReText">-</strong></div>
+        <div><span>tau</span><strong id="tauText">-</strong></div>
+        <div><span>mass</span><strong id="massText">-</strong></div>
+        <div><span>Cd proxy</span><strong id="cdText">-</strong></div>
+        <div><span>Cl proxy</span><strong id="clText">-</strong></div>
+        <div><span>St estimate</span><strong id="stText">-</strong></div>
+      </div>
+
+      <div class="chart-card">
+        <h2>Lift proxy history</h2>
+        <canvas id="chartCanvas" width="900" height="190"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="presets.js"></script>
+  <script src="geometry.js"></script>
+  <script src="lbm.js"></script>
+  <script src="renderer.js"></script>
+  <script src="exporter.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,274 @@
+:root {
+  --bg: #071014;
+  --panel: #0d1b21;
+  --panel-2: #102832;
+  --text: #eef7f6;
+  --muted: #9db1b0;
+  --line: #24404a;
+  --accent: #1ee3cf;
+  --accent-2: #ffb454;
+  --danger: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(30, 227, 207, 0.12), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(255, 180, 84, 0.10), transparent 28%),
+    linear-gradient(180deg, #071014, #09171c 45%, #071014);
+  font-family: Avenir Next, Segoe UI, Helvetica, Arial, sans-serif;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: flex-end;
+  padding: 32px 36px 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 5vw, 4.2rem);
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  margin: 0 0 12px;
+  grid-column: 1 / -1;
+  font-size: 0.92rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 850px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 1.05rem;
+}
+
+.hero-card {
+  min-width: 170px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  background: rgba(16, 40, 50, 0.82);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+}
+
+.hero-card span,
+.hero-card strong {
+  display: block;
+}
+
+.hero-card span {
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(310px, 390px) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 36px 36px;
+}
+
+.panel,
+.stage {
+  min-width: 0;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+section {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(13, 27, 33, 0.86);
+  padding: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #08151a;
+  color: var(--text);
+  padding: 10px 11px;
+  font: inherit;
+}
+
+input[type="range"] {
+  padding: 0;
+  accent-color: var(--accent);
+}
+
+output {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+button {
+  cursor: pointer;
+  border-color: transparent;
+  background: var(--accent);
+  color: #062025;
+  font-weight: 800;
+}
+
+button.ghost {
+  border-color: var(--line);
+  background: #0a171c;
+  color: var(--text);
+}
+
+button.secondary {
+  background: var(--panel-2);
+  color: var(--accent);
+  border-color: var(--line);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.canvas-shell {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 14px;
+  background:
+    linear-gradient(135deg, rgba(30, 227, 207, 0.08), rgba(255, 180, 84, 0.06)),
+    #071014;
+  overflow: hidden;
+}
+
+#flowCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  border-radius: 14px;
+  background: #020709;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stats div,
+.chart-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(13, 27, 33, 0.88);
+  padding: 14px;
+}
+
+.stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-bottom: 5px;
+}
+
+.stats strong {
+  font-size: 1rem;
+}
+
+.chart-card h2 {
+  margin-bottom: 12px;
+}
+
+#chartCanvas {
+  width: 100%;
+  height: 190px;
+}
+
+.obstacle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.obstacle-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  background: #08151a;
+  font-size: 0.86rem;
+}
+
+.obstacle-chip button {
+  width: auto;
+  padding: 5px 8px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(255, 107, 107, 0.35);
+}
+
+@media (max-width: 1050px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+

@@ -1,0 +1,45 @@
+{
+  "name": "Multi-Obstacle Channel",
+  "domain": {
+    "nx": 320,
+    "ny": 150
+  },
+  "fluid": {
+    "name": "water",
+    "density": 997.0,
+    "kinematic_viscosity": 0.000001
+  },
+  "flow": {
+    "reynolds": 160,
+    "lattice_velocity": 0.05,
+    "profile": "parabolic",
+    "perturbation": 0.0012
+  },
+  "solver": {
+    "steps_per_frame": 7
+  },
+  "obstacles": [
+    {
+      "type": "circle",
+      "x": 90,
+      "y": 62,
+      "radius": 14,
+      "angle_deg": 0
+    },
+    {
+      "type": "ellipse",
+      "x": 158,
+      "y": 92,
+      "rx": 13,
+      "ry": 24,
+      "angle_deg": 25
+    },
+    {
+      "type": "triangle",
+      "x": 220,
+      "y": 70,
+      "size": 32,
+      "angle_deg": -12
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "samples": 3001,
+  "analysis_samples": 1951,
+  "signal": "cl_proxy",
+  "smooth_window": 101,
+  "mean_cd": 5.483911667938493,
+  "rms_cl": 0.011312108791969243,
+  "frequency_lattice_steps": null,
+  "strouhal": null,
+  "zero_crossing_periods": 0
+}

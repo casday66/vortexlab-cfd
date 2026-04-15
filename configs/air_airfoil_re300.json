@@ -1,0 +1,31 @@
+{
+  "name": "Air NACA Wake Re300",
+  "domain": {
+    "nx": 300,
+    "ny": 140
+  },
+  "fluid": {
+    "name": "air",
+    "density": 1.225,
+    "kinematic_viscosity": 0.000015
+  },
+  "flow": {
+    "reynolds": 300,
+    "lattice_velocity": 0.045,
+    "profile": "uniform",
+    "perturbation": 0.001
+  },
+  "solver": {
+    "steps_per_frame": 6
+  },
+  "obstacles": [
+    {
+      "type": "airfoil",
+      "x": 95,
+      "y": 70,
+      "chord": 56,
+      "thickness": 0.12,
+      "angle_deg": 8
+    }
+  ]
+}
